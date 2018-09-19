@@ -11,7 +11,7 @@ public class Parser {
     private String tmplDate = "\\d{1,2}\\.\\d{1,2}\\.\\d{4}";
     private String tmplQuestion = "\\d*(\\.\\d*(\\.\\d*)?)?";
     private String tmplServiceId = "\\d*(\\.\\d*)?";
-    private String tmplLineC = "C " + tmplServiceId + " " + tmplQuestion + " ([PN]) " + tmplDate+ " \\d*";
+    private String tmplLineC = "C " + tmplServiceId + " " + tmplQuestion + " [PN] " + tmplDate+ " \\d*";
     private String tmplLineD = "D (" + tmplServiceId + "|\\*) (" + tmplQuestion + "|\\*) [PN] " + tmplDate+ "(-" + tmplDate+ ")?";
     private String sourceString;
     private List<LineD> linesD;
