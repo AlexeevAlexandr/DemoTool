@@ -1,0 +1,27 @@
+package model;
+
+import services.Parser;
+
+public class LineC extends Line {
+    private int time;
+
+    public LineC(String line) {
+        line = line.trim();
+        Parser parser = new Parser();
+        if (!parser.isLineC(line)) {
+            throw new IllegalArgumentException("Incorrect line format!");
+        }
+        String[] parameters = line.split(" ");
+
+        super.setService(parameters[1]);
+        super.setQuestion(parameters[2]);
+        super.setDataFrom(parameters[4]);
+
+        typeOfAnswer = parameters[3];
+        time = Integer.parseInt(parameters[5]);
+    }
+
+    public int getTime() {
+        return time;
+    }
+}
