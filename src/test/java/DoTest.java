@@ -1,5 +1,5 @@
 import org.junit.Test;
-import services.InputData;
+import inputData.InputData;
 import services.Tool;
 
 import static org.junit.Assert.assertEquals;
@@ -45,5 +45,8 @@ public class DoTest {
         tool.evaluate(inputData.inputParseDateException());
     }
 
-
+    @Test
+    public void Test100K() {
+        assertEquals(tool.evaluate(inputData.input100KRows()).trim(), check);
+    }
 }

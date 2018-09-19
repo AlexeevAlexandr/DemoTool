@@ -1,4 +1,4 @@
-package services;
+package inputData;
 
 public class InputData {
 
@@ -81,5 +81,19 @@ public class InputData {
                 "C 3 10.2 N 02.10.2012 100 " +
                 "D 1 * P 8.10.2012-20.11.2012 " +
                 "D 3 10 *P 01.12.2012";
+    }
+
+    public String input100KRows(){
+        Input100KRows data = new Input100KRows();
+        StringBuilder input = new StringBuilder();
+        for (int i = 0; i < 1000; i++) {
+        input.append(data.add100KRows());
+        }
+        return "1000 " + input.toString();
+    }
+    public static void main(String[] args) {
+        InputData data = new InputData();
+        System.out.println(data.input100KRows());
+
     }
 }
