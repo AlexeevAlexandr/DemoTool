@@ -1,16 +1,11 @@
 package model;
 
-import services.Parser;
-
 public class LineC extends Line {
     private int time;
 
     public LineC(String line) {
         line = line.trim();
-        Parser parser = new Parser();
-        if (!parser.isLineC(line)) {
-            throw new IllegalArgumentException("Incorrect line format!");
-        }
+
         String[] parameters = line.split(" ");
 
         super.setService(parameters[1]);

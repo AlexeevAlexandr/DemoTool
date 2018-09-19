@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parser {
+class Parser {
     private String tmplDate = "\\d{1,2}\\.\\d{1,2}\\.\\d{4}";
     private String tmplQuestion = "\\d*(\\.\\d*(\\.\\d*)?)?";
     private String tmplServiceId = "\\d*(\\.\\d*)?";
@@ -15,8 +15,6 @@ public class Parser {
     private String tmplLineD = "D (" + tmplServiceId + "|\\*) (" + tmplQuestion + "|\\*) [PN] " + tmplDate+ "(-" + tmplDate+ ")?";
     private String sourceString;
     private List<LineD> linesD;
-
-    public Parser(){}
 
     Parser(String inputString) {
         sourceString = inputString.replaceAll("[\t\n]", "").replaceAll(" {2,}+"," ").trim();
@@ -55,26 +53,15 @@ public class Parser {
 
     private List<LineD> parseToListD() {
         List<LineD> resultList = new ArrayList<>();
-
-        Matcher matcher = Pattern.compile(tmplLineD)
-                .matcher(sourceString);
+        Matcher matcher = Pattern.compile(tmplLineD).matcher(sourceString);
         while (matcher.find()) {
-            String itemLine = sourceString.substring(matcher.start(), matcher.end());
-            resultList.add(new LineD(itemLine));
+            resultList.add(new LineD(sourceString.substring(matcher.start(), matcher.end())));
         }
         return resultList;
     }
 
     private int getExpectedNumberOfLines(String inputString) {
         return Integer.parseInt(inputString.substring(0,inputString.indexOf(" ")));
-    }
-
-    public boolean isLineD(String line) {
-        return line.matches(tmplLineD);
-    }
-
-    public boolean isLineC(String line) {
-        return line.matches(tmplLineC);
     }
 
     String createTmplForSearchC(LineD lineD) {

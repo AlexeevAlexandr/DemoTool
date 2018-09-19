@@ -30,5 +30,20 @@ public class DoTest {
         assertEquals(tool.evaluate(inputData.input2False()).trim(), check2);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void TestIncorrectNumberLinesException() {
+        tool.evaluate(inputData.inputIncorrectNumberLinesException());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void TestParseException() {
+        tool.evaluate(inputData.inputParseException());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void TestParseDateException() {
+        tool.evaluate(inputData.inputParseDateException());
+    }
+
 
 }

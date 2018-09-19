@@ -2,13 +2,10 @@ package services;
 
 import model.LineC;
 import model.LineD;
-
 import java.util.List;
 
 public class Tool {
-
     public String evaluate(String inputString) {
-
         Parser parser = new Parser(inputString);
         StringBuilder result = new StringBuilder();
 

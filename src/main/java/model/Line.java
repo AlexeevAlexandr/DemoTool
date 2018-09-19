@@ -37,7 +37,6 @@ abstract public class Line {
 
     Date parseDate(String date) {
         DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-
         try {
             return format.parse(date);
         } catch (ParseException e) {
@@ -46,7 +45,6 @@ abstract public class Line {
     }
 
     void setDataFrom(String dataFrom) {
-
         this.dateFrom = parseDate(dataFrom);
     }
 

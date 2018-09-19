@@ -1,6 +1,5 @@
 package model;
 
-import services.Parser;
 import java.util.Date;
 
 public class LineD extends Line{
@@ -8,10 +7,7 @@ public class LineD extends Line{
 
     public LineD(String line) {
         line = line.trim();
-        Parser parser = new Parser();
-        if (!parser.isLineD(line)) {
-            throw new IllegalArgumentException("Incorrect line format!");
-        }
+
         String[] parameters = line.split(" ");
 
         super.setService(parameters[1]);
@@ -28,8 +24,6 @@ public class LineD extends Line{
     }
 
     public boolean isDateIn(LineC c) {
-        if (null == dateTo && c.getDateFrom().equals(dateFrom)) {
-            return true;
-        } else return !c.getDateFrom().before(dateFrom) && !c.getDateFrom().after(dateTo);
+        return !c.getDateFrom().before(dateFrom) && !c.getDateFrom().after(dateTo);
     }
 }
