@@ -2,7 +2,6 @@ package services;
 
 import model.LineC;
 import model.LineD;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -46,8 +45,7 @@ public class Parser {
     List<LineC> parseToListC(String tmpl) {
         List<LineC> resultList = new ArrayList<>();
 
-        Matcher matcher = Pattern.compile(tmpl)
-                .matcher(sourceString);
+        Matcher matcher = Pattern.compile(tmpl).matcher(sourceString);
         while (matcher.find()) {
             String itemLine = sourceString.substring(matcher.start(), matcher.end());
             resultList.add(new LineC(itemLine));

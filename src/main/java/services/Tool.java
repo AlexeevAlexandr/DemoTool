@@ -22,7 +22,7 @@ public class Tool {
                     counter++;
                 }
             }
-            result.append((0 == counter ) ?  "-" : String.valueOf(sum/counter));
+            result.append((counter == 0) ?  "-" : String.valueOf(sum / counter));
             result.append(" ");
         }
         return result.toString();
