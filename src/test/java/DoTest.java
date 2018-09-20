@@ -12,22 +12,22 @@ public class DoTest {
 
     @Test
     public void TestData1() {
-        assertEquals(tool.evaluate(inputData.input1()).trim(), check);
+        assertEquals(check, tool.evaluate(inputData.input1()).trim());
     }
 
     @Test(expected = AssertionError.class)
     public void TestFalseData1() {
-        assertEquals(tool.evaluate(inputData.input1False()).trim(), check);
+        assertEquals(check, tool.evaluate(inputData.input1False()).trim());
     }
 
     @Test()
     public void TestData2() {
-        assertEquals(tool.evaluate(inputData.input2()).trim(), check2);
+        assertEquals(check2, tool.evaluate(inputData.input2()).trim());
     }
 
     @Test(expected = AssertionError.class)
     public void TestFalseData2() {
-        assertEquals(tool.evaluate(inputData.input2False()).trim(), check2);
+        assertEquals(check2, tool.evaluate(inputData.input2False()).trim());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -47,6 +47,6 @@ public class DoTest {
 
     @Test
     public void Test100K() {
-        assertEquals(tool.evaluate(inputData.input100KRows()).trim(), check);
+        assertEquals(check, tool.evaluate(inputData.input100KRows()).trim());
     }
 }

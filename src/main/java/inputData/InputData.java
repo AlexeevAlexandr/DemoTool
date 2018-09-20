@@ -86,11 +86,13 @@ public class InputData {
     public String input100KRows(){
         Input100KRows data = new Input100KRows();
         StringBuilder input = new StringBuilder();
-        for (int i = 0; i < 1000; i++) {
+        int i;
+        for (i = 0; i < 100; i++) {
         input.append(data.add100KRows());
         }
-        return "1000 " + input.toString();
+        return (i) + " " + input;
     }
+
     public static void main(String[] args) {
         InputData data = new InputData();
         System.out.println(data.input100KRows());

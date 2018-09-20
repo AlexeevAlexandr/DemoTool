@@ -13,7 +13,8 @@ class Input100KRows {
         String b = (a.equals("C")) ? randomNumber() + " " : "";
 
         return a + " " + randomNumber() + " " + randomNumber() + " " + random_P_or_N() + " " + date() + " " + b;
-//        return  "C 1.1 8.15.1 P 15.10.2012 83 " +
+
+//                "C 1.1 8.15.1 P 15.10.2012 83 " +
 //                "C 1 10.1 P 01.12.2012 65 " +
 //                "C 1.1 5.5.1 P 01.11.2012 117 " +
 //                "D 1.1 8 P 01.01.2012-01.12.2012 " +
@@ -31,7 +32,7 @@ class Input100KRows {
     }
 
     private String randomNumber(){
-        return String.valueOf((int)((Math.random()+1) * 9));
+        return String.valueOf((int) ((Math.random()+1) * 3));
     }
 
     private String date(){
