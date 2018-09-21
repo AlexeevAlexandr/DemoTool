@@ -1,5 +1,7 @@
 package inputData;
 
+import java.util.ArrayList;
+
 public class InputData {
 
     //should be the result of (83 100 -)
@@ -87,15 +89,17 @@ public class InputData {
         Input100KRows data = new Input100KRows();
         StringBuilder input = new StringBuilder();
         int i;
-        for (i = 0; i < 100; i++) {
+        for (i = 0; i < 100_000; i++) {
         input.append(data.add100KRows());
         }
-        return (i) + " " + input;
+        return (i) + "," + input;
     }
 
     public static void main(String[] args) {
         InputData data = new InputData();
-        System.out.println(data.input100KRows());
+        ArrayList<String> list = new ArrayList<String>();
+                list.add(data.input100KRows());
+        System.out.println(list);
 
     }
 }

@@ -10,9 +10,9 @@ class Input100KRows {
     String add100KRows() {
 
         String a = random_C_or_D();
-        String b = (a.equals("C")) ? randomNumber() + " " : "";
+        String b = (a.equals("C")) ? " " + randomNumber() + "," : ",";
 
-        return a + " " + randomNumber() + " " + randomNumber() + " " + random_P_or_N() + " " + date() + " " + b;
+        return a + " " + randomNumber() + " " + randomNumber() + " " + random_P_or_N() + " " + date() + b;
 
 //                "C 1.1 8.15.1 P 15.10.2012 83 " +
 //                "C 1 10.1 P 01.12.2012 65 " +
