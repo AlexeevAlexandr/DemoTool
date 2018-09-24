@@ -44,7 +44,7 @@ public class DoTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void TestParseDateException() throws ParseException {
-        parsing.doWork(inputData.inputParseDateException());;
+        parsing.doWork(inputData.inputParseDateException());
     }
 
     @Test
