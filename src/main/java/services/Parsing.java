@@ -1,42 +1,16 @@
 package services;
 
-import inputData.InputData;
-
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 
 public class Parsing {
+    private Tools tools = new Tools();
 
-    private Date parseDate(String string) throws ParseException {
-        DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        return format.parse(string);
-    }
-
-    private boolean between(Date date, Date dateStart, Date dateEnd) {
-        if (date != null && dateStart != null && dateEnd != null) {
-            return date.after(dateStart) && date.before(dateEnd);
-        }
-        return false;
-    }
-
-    public static void main(String[] args) throws ParseException {
-        Parsing parsing = new Parsing();
-        InputData inputData = new InputData();
+    public String doWork(String inputData) throws ParseException {
         ArrayList<Object> input = new ArrayList<>();
-//        String in = "7," +
-//                "C 1.1 8.15.1 P 15.10.2012 83," +
-//                "C 1 10.1 P 01.12.2012 65," +
-//                "C 1.1 5.5.1 P 01.11.2012 117," +
-//                "D 1.1 8 P 01.01.2012-01.12.2012," +
-//                "C 3 10.2 N 02.10.2012 100," +
-//                "D 1 * P 8.10.2012-20.11.2012," +
-//                "D 3 10 P 01.12.2012";
-        String in = inputData.input100KRows();
-        Collections.addAll(input, in.split(","));
+
+        Collections.addAll(input, inputData.split(","));
 
         int capacity = Integer.parseInt(input.get(0).toString());
 
@@ -53,9 +27,11 @@ public class Parsing {
                 Collections.addAll(inputD, input2);
             }
         }
+
         String inD;
         String inC;
         String inDate;
+        StringBuilder answer = new StringBuilder();
         for (Object anInputD : inputD) {
             ArrayList<Object> parserD = new ArrayList<>();
             inD = anInputD.toString().replaceAll("[\\[\\] ]", "");
@@ -64,6 +40,7 @@ public class Parsing {
             ArrayList<Object> listParseDateD = new ArrayList<>();
             inDate = parserD.get(4).toString().replaceAll("[\\[\\] ]", "");
             Collections.addAll(listParseDateD, inDate.split("-"));
+
             if (listParseDateD.size() == 1) {
                 listParseDateD.add(parserD.get(4).toString().replaceAll("[\\[\\] ]", ""));
             }
@@ -79,29 +56,33 @@ public class Parsing {
                 if (!s.equals("*")) {
                     if (((parserD.get(1).toString().substring(0, 1)).equals(parserC.get(1).toString().substring(0, 1))) &&
                             ((parserD.get(2).toString().substring(0, 1)).equals(parserC.get(2).toString().substring(0, 1))) &&
-                            (parsing.between(parsing.parseDate(parserC.get(4).toString()),
-                                    parsing.parseDate(listParseDateD.get(0).toString()),
-                                    parsing.parseDate(listParseDateD.get(1).toString())))) {
+                            (tools.between(tools.parseDate(parserC.get(4).toString()),
+                                    tools.parseDate(listParseDateD.get(0).toString()),
+                                    tools.parseDate(listParseDateD.get(1).toString()))))
+                    {
                         count++;
                         result += Integer.parseInt(parserC.get(5).toString());
                     }
                 } else {
                     if (((parserD.get(1).toString().substring(0, 1)).equals(parserC.get(1).toString().substring(0, 1))) &&
-                            (parsing.between(parsing.parseDate(parserC.get(4).toString()),
-                                    parsing.parseDate(listParseDateD.get(0).toString()),
-                                    parsing.parseDate(listParseDateD.get(1).toString())))) {
+                            (tools.between(tools.parseDate(parserC.get(4).toString()),
+                                    tools.parseDate(listParseDateD.get(0).toString()),
+                                    tools.parseDate(listParseDateD.get(1).toString()))))
+                    {
                         count++;
                         result += Integer.parseInt(parserC.get(5).toString());
                     }
                 }
             }
             if (result > 0) {
-                System.out.print(result / count + " ");
+                answer.append(result / count).append(" ");
             } else {
-                System.out.print("- ");
+                answer.append("- ");
             }
         }
+        return answer.toString();
     }
 }
+
 
 

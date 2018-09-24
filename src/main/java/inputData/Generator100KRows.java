@@ -5,15 +5,15 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
-class Input100KRows {
+/*
+The class generates 100K of rows
+ */
+class Generator100KRows {
 
     String add100KRows() {
-
         String a = random_C_or_D();
         String b = (a.equals("C")) ? " " + randomNumber2() + "," : "-" + date() + ",";
-
         return a + " " + randomNumber() + " " + randomNumber() + " " + random_P_or_N() + " " + date() + b;
-
     }
 
     private String random_C_or_D() {
@@ -33,6 +33,7 @@ class Input100KRows {
     }
 
     private String date(){
-        return DateTimeFormatter.ofPattern("MM.dd.yyyy").format(LocalDate.now().minus(Period.ofDays((new Random().nextInt(365 * 70)))));
+        return DateTimeFormatter.ofPattern("MM.dd.yyyy").
+                format(LocalDate.now().minus(Period.ofDays((new Random().nextInt(365 * 70)))));
     }
 }

@@ -1,52 +1,54 @@
 import org.junit.Test;
 import inputData.InputData;
-import services.Tool;
+import services.Parsing;
+
+import java.text.ParseException;
 
 import static org.junit.Assert.assertEquals;
 
 public class DoTest {
     private InputData inputData = new InputData();
-    private Tool tool = new Tool();
+    private Parsing parsing = new Parsing();
     private String check = "83 100 -";
-    private String check2 = "20 30 -";
+    private String check2 = "- 30 -";
 
     @Test
-    public void TestData1() {
-        assertEquals(check, tool.evaluate(inputData.input1()).trim());
+    public void TestData1() throws ParseException {
+        assertEquals(check, parsing.doWork(inputData.input1()).trim());
     }
 
     @Test(expected = AssertionError.class)
-    public void TestFalseData1() {
-        assertEquals(check, tool.evaluate(inputData.input1False()).trim());
+    public void TestFalseData1() throws ParseException {
+        assertEquals(check, parsing.doWork(inputData.input2()).trim());
     }
 
     @Test()
-    public void TestData2() {
-        assertEquals(check2, tool.evaluate(inputData.input2()).trim());
+    public void TestData2() throws ParseException {
+        assertEquals(check2, parsing.doWork(inputData.input2()).trim());
     }
 
     @Test(expected = AssertionError.class)
-    public void TestFalseData2() {
-        assertEquals(check2, tool.evaluate(inputData.input2False()).trim());
+    public void TestFalseData2() throws ParseException {
+        assertEquals(check2, parsing.doWork(inputData.input1()).trim());
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void TestIncorrectNumberLinesException() {
-        tool.evaluate(inputData.inputIncorrectNumberLinesException());
+    public void TestIncorrectNumberLinesException() throws ParseException {
+        parsing.doWork(inputData.inputIncorrectNumberLinesException());
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void TestParseException() {
-        tool.evaluate(inputData.inputParseException());
+    public void TestParseException() throws ParseException {
+        parsing.doWork(inputData.inputParseException());
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void TestParseDateException() {
-        tool.evaluate(inputData.inputParseDateException());
+    public void TestParseDateException() throws ParseException {
+        parsing.doWork(inputData.inputParseDateException());;
     }
 
     @Test
-    public void Test100K() {
-        assertEquals(check, tool.evaluate(inputData.input100KRows()).trim());
+    public void Test100K() throws ParseException {
+        assertEquals(check2, parsing.doWork(inputData.input100KRows()).trim());
     }
 }
