@@ -18,6 +18,11 @@ public class Parsing {
         ArrayList<Object> inputD = new ArrayList<>();
         String in2;
         int capacity = Integer.parseInt(input.get(0).toString());
+
+        //comparison of input size and number of rows
+        if (capacity != (input.size() - 1)){
+            throw new IllegalArgumentException ("Incorrect number of rows");
+        }
         for (int i = 1; i <= capacity; i++) {
             ArrayList<Object> input2 = new ArrayList<>();
             in2 = input.get(i).toString();
