@@ -5,8 +5,7 @@ import services.Parsing;
 import java.text.ParseException;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class DoTest {
     private InputData inputData = new InputData();
@@ -51,10 +50,10 @@ public class DoTest {
 
     @Test
     public void test() throws ParseException {
-        Parsing test = mock(Parsing.class);
+        Parsing parsing = mock(Parsing.class);
 
-        when(test.doWork(inputData.input100KRows())).thenReturn("OK");
-        assertEquals("OK", "OK");
+        parsing.doWork(inputData.input100KRows());
+        verify(parsing, times(1));
 
     }
 }
