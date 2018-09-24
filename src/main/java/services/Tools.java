@@ -7,7 +7,7 @@ import java.util.Date;
 
 class Tools {
 
-    boolean between(Date date, Date dateStart, Date dateEnd) {
+    boolean comparingDates(Date date, Date dateStart, Date dateEnd) {
         return date.after(dateStart) && date.before(dateEnd);
     }
 

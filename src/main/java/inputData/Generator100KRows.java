@@ -10,10 +10,10 @@ The class generates 100K of rows
  */
 class Generator100KRows {
 
-    String add100KRows() {
+    String generateRow() {
         String a = random_C_or_D();
-        String b = (a.equals("C")) ? " " + randomNumber2() + "," : "-" + date() + ",";
-        return a + " " + randomNumber() + " " + randomNumber() + " " + random_P_or_N() + " " + date() + b;
+        String b = (a.equals("C")) ? " " + randomNumber2() + "," : "-" + randomDate() + ",";
+        return a + " " + randomNumber() + " " + randomNumber() + " " + random_P_or_N() + " " + randomDate() + b;
     }
 
     private String random_C_or_D() {
@@ -32,7 +32,7 @@ class Generator100KRows {
         return String.valueOf((int) (Math.random() * 200));
     }
 
-    private String date(){
+    private String randomDate(){
         return DateTimeFormatter.ofPattern("MM.dd.yyyy").
                 format(LocalDate.now().minus(Period.ofDays((new Random().nextInt(365 * 70)))));
     }

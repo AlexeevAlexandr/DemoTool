@@ -13,11 +13,11 @@ public class Parsing {
         ArrayList<Object> input = new ArrayList<>();
         Collections.addAll(input, inputData.split(","));
 
-        int capacity = Integer.parseInt(input.get(0).toString());
-
+        //separation of data on C and D
         ArrayList<Object> inputC = new ArrayList<>();
         ArrayList<Object> inputD = new ArrayList<>();
         String in2;
+        int capacity = Integer.parseInt(input.get(0).toString());
         for (int i = 1; i <= capacity; i++) {
             ArrayList<Object> input2 = new ArrayList<>();
             in2 = input.get(i).toString();
@@ -33,11 +33,13 @@ public class Parsing {
         String inC;
         String inDate;
         StringBuilder answer = new StringBuilder();
+        //getting rows D one by one, for compare with each rows C
         for (Object anInputD : inputD) {
             ArrayList<Object> parserD = new ArrayList<>();
             inD = anInputD.toString().replaceAll("[\\[\\] ]", "");
             Collections.addAll(parserD, inD.split(","));
 
+            //getting a date for comparison
             ArrayList<Object> listParseDateD = new ArrayList<>();
             inDate = parserD.get(4).toString().replaceAll("[\\[\\] ]", "");
             Collections.addAll(listParseDateD, inDate.split("-"));
@@ -46,6 +48,7 @@ public class Parsing {
                 listParseDateD.add(parserD.get(4).toString().replaceAll("[\\[\\] ]", ""));
             }
 
+            //comparing of parameters, counting of scores
             int count = 0;
             int result = 0;
             for (Object anInputC : inputC) {
@@ -57,7 +60,7 @@ public class Parsing {
                 if (!s.equals("*")) {
                     if (((parserD.get(1).toString().substring(0, 1)).equals(parserC.get(1).toString().substring(0, 1))) &&
                             ((parserD.get(2).toString().substring(0, 1)).equals(parserC.get(2).toString().substring(0, 1))) &&
-                            (tools.between(tools.parseDate(parserC.get(4).toString()),
+                            (tools.comparingDates(tools.parseDate(parserC.get(4).toString()),
                                     tools.parseDate(listParseDateD.get(0).toString()),
                                     tools.parseDate(listParseDateD.get(1).toString()))))
                     {
@@ -66,7 +69,7 @@ public class Parsing {
                     }
                 } else {
                     if (((parserD.get(1).toString().substring(0, 1)).equals(parserC.get(1).toString().substring(0, 1))) &&
-                            (tools.between(tools.parseDate(parserC.get(4).toString()),
+                            (tools.comparingDates(tools.parseDate(parserC.get(4).toString()),
                                     tools.parseDate(listParseDateD.get(0).toString()),
                                     tools.parseDate(listParseDateD.get(1).toString()))))
                     {
