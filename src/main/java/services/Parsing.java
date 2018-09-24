@@ -8,8 +8,9 @@ public class Parsing {
     private Tools tools = new Tools();
 
     public String doWork(String inputData) throws ParseException {
-        ArrayList<Object> input = new ArrayList<>();
 
+        //Collection and separation on parts of input data
+        ArrayList<Object> input = new ArrayList<>();
         Collections.addAll(input, inputData.split(","));
 
         int capacity = Integer.parseInt(input.get(0).toString());
